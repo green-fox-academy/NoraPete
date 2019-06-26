@@ -1,0 +1,76 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-image: url(./asstes/seigaiha.png);
+}
+
+main{
+    font-family: 'Titillium Web', sans-serif;
+}
+
+.content{
+    padding: 0 10%;
+}
+
+h1{
+    font-family: 'Oswald', sans-serif;
+    font-size: 40px;
+    color: teal;
+    background-color: rgb(197, 196, 196);
+    margin-top: 20px;
+    padding-left: 10%;
+}
+
+h2{
+    font-family: 'Oswald', sans-serif;
+    font-size: 30px;
+}
+
+h3{
+    font-size: 20px;
+    font-weight: normal;
+}
+
+p{
+    font-size: 15px;
+}
+
+.lighter{
+    color: rgb(197, 196, 196);
+}
+
+.addNewPost p{
+    border: solid 1px black;
+    margin-bottom: 10px;
+    padding: 10px 5px;
+    background-color: white;
+}
+
+.listOfPost div{
+    border: solid 1px black;
+    margin: 15px 0;
+    padding: 10px;
+    background-color: white;
+}
+
+.listOfPost h3{
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.button{
+    background-color: rgb(197, 196, 196);
+    padding: 15px;
+    border: solid 2px teal;
+    color: teal;
+    font-size: 15px;
+    margin: 20px 0;
+}
+
+.inputContent{
+    width: 500px;
+    height: 200px;
+}
