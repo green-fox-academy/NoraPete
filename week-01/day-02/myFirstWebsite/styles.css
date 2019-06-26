@@ -1,0 +1,83 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: Courier;
+    background-image: url(./assets/topography.png)
+}
+
+h2 {
+    font-family: 'Merriweather', serif;
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.NAVbar {
+    background-color: #333333;
+    height: 50px;
+    padding: 10px 10%;
+    margin: 20px 0 0 20px;
+    text-align: right;
+}
+
+.NAVbar img {
+    float: left;
+}
+
+.NAVbar a {
+    color: #ff0099;
+    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin: 0 10px;
+}
+
+.bio {
+    margin: 100px 10%;
+}
+
+.bio h1 {
+    font-family: 'Merriweather', serif;
+    font-size: 50px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.bio h2 {
+    color: #ff0099;
+}
+
+.bio p {
+    font-size: 25px;
+    line-height: 30px;
+}
+.separator {
+    text-align: center;
+    margin: 100px auto;
+    letter-spacing: 10px;
+    font-size: 25px;
+}
+
+.definitions {
+    padding: 0 10%;
+    margin: 100px 0;
+}
+
+.definitions h2 {
+    text-align: center;
+}
+
+dt {
+    font-family: 'Merriweather', serif;
+    font-size: 25px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+dd {
+    font-size: 20px;
+    line-height: 25px;
+}
