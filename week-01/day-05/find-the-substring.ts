@@ -7,7 +7,3 @@ function substr(str: string, keyword: string) : number {
   
 console.log(substr("this is what I'm searching in", "searching"));
 console.log(substr("this is what I'm searching in", "not"));
-
-
-
-
