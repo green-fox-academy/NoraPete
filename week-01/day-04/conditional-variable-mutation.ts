@@ -28,7 +28,11 @@ if (b >= 10 && b <= 20) {
 
 console.log(out2);
 
-
+// if credits are at least 50,
+// and is_bonus is false decrement c by 2
+// if credits are smaller than 50,
+// and is_bonus is false decrement c by 1
+// if is_bonus is true c should remain the same
 
 let c: number = 123;
 let credits: number = 100;
@@ -44,7 +48,12 @@ if (isBonus) {
 
 console.log(c);
 
-
+// if d is dividable by 4
+// and time is not more than 200
+// set out3 to "check"
+// if time is more than 200
+// set out3 to "Time out"
+// otherwise set out3 to "Run Forest Run!"
 
 let d: number =  8;
 let time: number = 120;
