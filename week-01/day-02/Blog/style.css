@@ -5,10 +5,13 @@
 
 body{
     background-image: url(./asstes/seigaiha.png);
+    font-family: 'Titillium Web', sans-serif;
 }
 
-main{
-    font-family: 'Titillium Web', sans-serif;
+nav{
+    background-color: rgb(197, 196, 196);
+    margin-top: 20px;
+    padding-left: 10%;
 }
 
 .content{
@@ -19,9 +22,6 @@ h1{
     font-family: 'Oswald', sans-serif;
     font-size: 40px;
     color: teal;
-    background-color: rgb(197, 196, 196);
-    margin-top: 20px;
-    padding-left: 10%;
 }
 
 h2{
