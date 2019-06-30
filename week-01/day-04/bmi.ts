@@ -5,4 +5,4 @@ let heightInM: number = 1.78;
 
 let bmi: number = massInKg / (heightInM ** 2);
 
-console.log(bmi);
+console.log(bmi.toFixed(2));
