@@ -1,5 +1,7 @@
 'use strict';
 
+// if a is even increment out by one
+
 let a: number = 24;
 let out: number = 0;
 
@@ -9,7 +11,9 @@ if (a % 2 == 0) {
 
 console.log(out);
 
-
+// if b is between 10 and 20 set out2 to "Sweet!"
+// if less than 10 set out2 to "Less!",
+// if more than 20 set out2 to "More!"
 
 let b: number = 13;
 let out2: string = '';
