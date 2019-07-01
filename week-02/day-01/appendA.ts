@@ -6,7 +6,7 @@
 
 let animals: string[] = ['koal', 'pand', 'zebr'];
 
-let animals2: string[] = animals.map(function(item) {
+let animals2: string[] = animals.map(function (item) {
     item += 'a';
     return item;
 })

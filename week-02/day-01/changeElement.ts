@@ -6,12 +6,14 @@
 
 let numList: number[] = [1, 2, 3, 8, 5, 6];
 
-let correctNumList: number[] = numList.map(function(item) {
+
+let correctNumList: number[] = numList.map(function (item) {
     if (item === 8) {
         return 4;
     } else {
         return item;
     }
 })
+
 
 console.log(correctNumList[3]);
