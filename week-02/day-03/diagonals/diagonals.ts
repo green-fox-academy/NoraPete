@@ -31,4 +31,4 @@ function drawsDiagonal (x, y) {
     }
 }
 
-drawsDiagonal(0, 400);
+drawsDiagonal(0, 0);

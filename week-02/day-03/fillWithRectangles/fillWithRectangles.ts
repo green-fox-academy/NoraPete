@@ -9,7 +9,7 @@ const ctx = canvas.getContext('2d');
 // Avoid code duplication.
 export = {};
 
-let colorSheat = {
+let colorSheet = {
     0: 'red',
     1: 'green',
     2: 'blue',
@@ -17,6 +17,6 @@ let colorSheat = {
 };
 
 for (let i: number = 0; i < 4; i ++) {
-    ctx.fillStyle = colorSheat[i % 4];
+    ctx.fillStyle = colorSheet[i % 4];
     ctx.fillRect(20 + i * 5, 20 + i * 9, i * 20 + 10, i * 30 + 20)
 }
