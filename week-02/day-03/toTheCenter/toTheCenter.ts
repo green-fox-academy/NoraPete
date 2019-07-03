@@ -9,11 +9,12 @@ const ctx = canvas.getContext('2d');
 // The x and y coordinates of the line's starting point
 // and draws a line from that point to the center of the canvas
 // Draw at least 3 lines with that function using a loop.
+export = {};
 
 function drawsLineToTheCenter (x: number, y: number) {
     ctx.beginPath();
     ctx.moveTo(x, y);
-    ctx.lineTo(300, 200);
+    ctx.lineTo(canvas.width / 2, canvas.height / 2);
     ctx.stroke();
 }
 

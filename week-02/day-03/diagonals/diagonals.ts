@@ -7,15 +7,16 @@ const ctx = canvas.getContext('2d');
 
 // Draw the canvas' diagonals.
 // If it starts from the upper-left corner it should be green, otherwise it should be red.
+export = {};
 
 function drawsDiagonal (x, y) {
     if (x == 0 && y == 0) {
         ctx.beginPath();
         ctx.strokeStyle = 'green';
         ctx.moveTo(x, y);
-        ctx.lineTo(600, 400);
+        ctx.lineTo(canvas.width, canvas.height);
         ctx.stroke();
-    } else if (x == 600 && y == 400) {
+    } else if (x == canvas.width && y == canvas.width) {
         ctx.beginPath();
         ctx.strokeStyle = 'red';
         ctx.moveTo(x, y);
@@ -24,8 +25,8 @@ function drawsDiagonal (x, y) {
     } else {
         ctx.beginPath();
         ctx.strokeStyle = 'red';
-        ctx.moveTo(600, 0);
-        ctx.lineTo(0, 400);
+        ctx.moveTo(canvas.width, 0);
+        ctx.lineTo(0, canvas.height);
         ctx.stroke();
     }
 }
