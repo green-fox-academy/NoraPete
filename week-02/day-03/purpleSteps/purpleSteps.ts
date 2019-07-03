@@ -24,8 +24,8 @@ function strokesSquares (x: number, y: number, size: number, col: string) {
 }
 
 for (let i: number = 0; i < 20; i ++) {
-    let xCoo: number = i * sqrSize;
-    let yCoo: number = i * sqrSize;
+    let xCoo: number = i * sqrSize + 10;
+    let yCoo: number = i * sqrSize +10;
     fillsSquares(xCoo, yCoo, sqrSize, fillColor)
     strokesSquares(xCoo, yCoo, sqrSize, strokeColor)
 }
