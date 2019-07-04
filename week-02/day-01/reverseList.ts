@@ -10,8 +10,8 @@
 let numList: number[] = [3, 4, 5, 6, 7];
 let tempNumList: number[] = [];
 
-for (let i: number = 0; i < numList.length; i ++) {
-    tempNumList[i] = numList[numList.length - i -1];
+for (let i: number = 0; i < numList.length; i++) {
+    tempNumList[i] = numList[numList.length - i - 1];
 }
 
 console.log(tempNumList);

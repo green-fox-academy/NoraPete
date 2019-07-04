@@ -14,11 +14,11 @@
 // ** Relax, a matrix is just like an array
 
 let sizeOfMatrix: number = 7;
-let matrixArray: any[] = [];
+let matrixArray: number[][] = [];
 
-for (let j: number = 0; j < sizeOfMatrix; j ++) {
+for (let j: number = 0; j < sizeOfMatrix; j++) {
     let lineArray: number[] = [];
-    for (let i: number = 0; i < sizeOfMatrix; i ++) {
+    for (let i: number = 0; i < sizeOfMatrix; i++) {
         lineArray[i] = 0;
     }
     lineArray[lineArray.length - j - 1] = 1;
