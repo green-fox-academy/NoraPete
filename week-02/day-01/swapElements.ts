@@ -4,7 +4,8 @@
 // -  Swap the first and the third element of `abc`
 
 let abc: string[] = ['Arthur', 'Boe', 'Chloe'];
-abc.push(abc[0]);
+
+abc.splice(3, 0, abc[0]);
 abc.splice(0, 1, abc[2]);
 abc.splice(2, 1);
 
