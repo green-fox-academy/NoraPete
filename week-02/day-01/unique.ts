@@ -3,14 +3,14 @@
 //  Create a function that takes a list of numbers as a parameter
 //  Returns a list of numbers where every number in the list occurs only once
 
-function unique(arr: number[]) : number[] {
+function unique(arr: number[]): number[] {
     let uniqueNumbers: number[] = [];
     arr.forEach(function (item) {
-        if (uniqueNumbers.indexOf(item) < 0)
-        uniqueNumbers.push(item);
+        if (uniqueNumbers.indexOf(item) < 0) {
+            uniqueNumbers.push(item);
+        }
     })
     return uniqueNumbers;
-
 }
 
 //  Example

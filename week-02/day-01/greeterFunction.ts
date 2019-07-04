@@ -7,7 +7,7 @@
 
 let nameToGreet: string = 'Green Fox';
 
-function greet (inputName: string) : string {
+function greet(inputName: string): string {
     let greetingSentence: string = 'Greetings, dear ';
     greetingSentence += inputName;
     return greetingSentence;
