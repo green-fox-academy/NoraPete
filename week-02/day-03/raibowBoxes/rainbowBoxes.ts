@@ -18,7 +18,7 @@ function drawsSquareOfGivenSizeAndColor(size: number, colour: string) {
     ctx.fillRect(canvas.width / 2 - size / 2, canvas.height / 2 - size / 2, size, size);
 }
 
-for (let i: number = 0; i < canvas.width / 20; i ++ ) {
+for (let i: number = 0; i < canvas.width / 20; i++) {
     let squareSize: number = canvas.width;
     squareSize = squareSize - i * 20;
     drawsSquareOfGivenSizeAndColor(squareSize, colorSheet[i % colorSheet.length]);

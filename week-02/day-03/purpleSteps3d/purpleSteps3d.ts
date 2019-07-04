@@ -12,15 +12,15 @@ export = {};
 let xCoo: number = 0;
 let yCoo: number = 0;
 
-function drawsPurpleBoxesWithBlackBorder (x: number, y: number, size: number) {
+function drawsPurpleBoxesWithBlackBorder(x: number, y: number, size: number) {
     ctx.fillStyle = 'purple';
     ctx.fillRect(x, y, size, size);
     ctx.strokeStyle = 'black';
     ctx.strokeRect(x, y, size, size);
 }
 
-for (let i: number = 0; i < 6; i ++) {
-    let sqrSize: number = 20 + i * 20
+for (let i: number = 0; i < 6; i++) {
+    let sqrSize: number = 10 + i * 10
     drawsPurpleBoxesWithBlackBorder(xCoo, yCoo, sqrSize);
     xCoo += sqrSize;
     yCoo += sqrSize;

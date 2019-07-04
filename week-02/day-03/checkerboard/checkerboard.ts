@@ -8,9 +8,7 @@ const ctx = canvas.getContext('2d');
 // Fill the canvas with a checkerboard pattern.
 export = {};
 
-let sqrSize: number = 50;
-
-
+let sqrSize: number = 5;
 
 function fillsSquare(x: number, y: number, size: number) {
     ctx.fillRect(x, y, size, size);

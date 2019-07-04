@@ -17,7 +17,7 @@ ctx.stroke();
 
 ctx.beginPath();
 ctx.strokeStyle = 'green';
-ctx.moveTo(canvas.width / 2, canvas.height /2 - 50);
-ctx.lineTo(canvas.width / 2, canvas.height /2 + 50);
+ctx.moveTo(canvas.width / 2, canvas.height / 2 - 50);
+ctx.lineTo(canvas.width / 2, canvas.height / 2 + 50);
 ctx.stroke();
 

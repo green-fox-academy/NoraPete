@@ -16,7 +16,7 @@ let colorSheet = {
     3: 'purple',
 };
 
-for (let i: number = 0; i < 4; i ++) {
+for (let i: number = 0; i < 4; i++) {
     ctx.fillStyle = colorSheet[i % 4];
     ctx.fillRect(20 + i * 5, 20 + i * 9, i * 20 + 10, i * 30 + 20)
 }

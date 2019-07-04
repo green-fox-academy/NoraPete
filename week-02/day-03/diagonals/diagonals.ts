@@ -9,7 +9,7 @@ const ctx = canvas.getContext('2d');
 // If it starts from the upper-left corner it should be green, otherwise it should be red.
 export = {};
 
-function drawsDiagonal (x, y) {
+function drawsDiagonal(x, y) {
     if (x == 0 && y == 0) {
         ctx.beginPath();
         ctx.strokeStyle = 'green';

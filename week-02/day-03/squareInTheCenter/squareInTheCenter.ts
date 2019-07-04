@@ -10,4 +10,4 @@ export = {};
 
 ctx.beginPath();
 ctx.fillStyle = 'green'
-ctx.fillRect (canvas.width / 2 - 5, canvas.height / 2 - 5, 10, 10);
+ctx.fillRect(canvas.width / 2 - 5, canvas.height / 2 - 5, 10, 10);

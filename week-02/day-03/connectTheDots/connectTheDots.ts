@@ -13,10 +13,10 @@ const ctx = canvas.getContext('2d');
 // [120, 100], [85, 130], [50, 100]]
 export = {};
 
-let dotsOfBox: number[][] = [[10, 10], [290,  10], [290, 290], [10, 290]];
+let dotsOfBox: number[][] = [[10, 10], [290, 10], [290, 290], [10, 290]];
 let dotList: number[][] = [[50, 100], [70, 70], [80, 90], [90, 90], [100, 70], [120, 100], [85, 130], [50, 100]]
 
-function connectsCoordinates (coordinateList: number[][]) {
+function connectsCoordinates(coordinateList: number[][]) {
     ctx.beginPath();
     ctx.strokeStyle = 'green';
     coordinateList.forEach(function (coordinates) {
@@ -26,6 +26,7 @@ function connectsCoordinates (coordinateList: number[][]) {
             ctx.lineTo(coordinates[0], coordinates[1]);
         }
     })
+    ctx.lineTo(coordinateList[0][0], coordinateList[0][1]);
     ctx.stroke();
 }
 

@@ -12,10 +12,10 @@ const ctx = canvas.getContext('2d');
 // Avoid code duplication.
 export = {};
 
-function drawsSquareOfCertainSize (x: number) {
-    ctx.strokeRect(canvas.width /2 - x / 2, canvas.height / 2 - x / 2, x, x);
+function drawsSquareOfCertainSize(x: number) {
+    ctx.strokeRect(canvas.width / 2 - x / 2, canvas.height / 2 - x / 2, x, x);
 }
 
-for (let i: number = 0; i < 3; i ++) {
+for (let i: number = 0; i < 3; i++) {
     drawsSquareOfCertainSize(300 - i * 40);
 }
