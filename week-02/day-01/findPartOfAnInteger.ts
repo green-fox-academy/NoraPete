@@ -10,7 +10,7 @@ function subint(findThis: number, inThis: number[]): number[] {
     inThis.forEach(function (numToSplit) {
         let splitNum: number[] = [];
         for (let i: number = 1; i - 1 <= Math.abs(numToSplit); i *= 10) {
-            splitNum.push(numToSplit % 10);
+            splitNum.push(Math.abs(numToSplit) % 10);
         }
         splitArray.push(splitNum);
     })
