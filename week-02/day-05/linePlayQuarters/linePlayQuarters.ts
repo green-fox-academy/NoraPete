@@ -5,31 +5,8 @@ const ctx = canvas.getContext('2d');
 
 export = {};
 
-/*
-let div: number = 2;
-let edgeX: number = 0 + canvas.width / div;
-let edgeY: number = 0 + canvas.height / div;
-
-let diff: number = edgeY / 16;
-ctx.beginPath();
-ctx.strokeStyle = 'limegreen';
-for (let i: number = 0; i < 16; i ++) {
-    ctx.moveTo(edgeX + 1, 1 + i * diff);
-    ctx.lineTo(edgeX +1 + (i + 1) * diff, edgeY -1);
-    ctx.stroke();
-}
-
-ctx.beginPath();
-ctx.strokeStyle = 'purple';
-for (let i: number = 0; i < 16; i ++) {
-    ctx.moveTo(1 + i * diff, edgeY + 1);
-    ctx.lineTo(edgeX -1, edgeY + 1 + (i + 1) * diff);
-    ctx.stroke();
-}
-*/
-
 let step: number = 16;
-let divide: number = 4;
+let divide: number = 8;
 let diff: number = canvas.width / (step * divide);
 let axisDiff: number = canvas.width / divide;
 
