@@ -6,7 +6,7 @@ const ctx = canvas.getContext('2d');
 export = {};
 
 let step: number = 16;
-let divide: number = 8;
+let divide: number = 4;
 let diff: number = canvas.width / (step * divide);
 let axisDiff: number = canvas.width / divide;
 
