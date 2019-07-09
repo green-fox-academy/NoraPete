@@ -19,4 +19,4 @@ function writesMyNameInAFile(targetFile: string): void {
     }
 }
 
-writesMyNameInAFile('my-file.txt');
+writesMyNameInAFile('../day-03/my-file.txt');

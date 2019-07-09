@@ -12,7 +12,6 @@ const fs = require('fs');
 let logBook: string;
 let logLines: string[];
 let splitLogLines: string[][] = [];
-let editedLogMatrix: string[][];
 try {
     logBook = fs.readFileSync('log.txt', 'utf-8');
 } catch (e) {
@@ -33,8 +32,6 @@ try {
 } catch (e) {
     console.log('couldn\'t divide by double spaces');
 }
-
-//console.log(splitLogLines);
 
 function uniqueIPs(log: string[][]): string[] {
     let selectedIPs: string[] = [];
