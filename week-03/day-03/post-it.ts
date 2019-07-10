@@ -1,6 +1,6 @@
 'usen strict';
 
-export class postIt {
+export class PostIt {
     backgroundColor: string;
     textOnIt: string;
     textColor: string;
@@ -11,8 +11,8 @@ export class postIt {
     }
 }
 
-let myFirstPostIt: postIt = new postIt('orange', 'Idea 1', 'blue');
-let mySecondPostIt: postIt = new postIt('pink', 'Awesome', 'black');
-let myThirdPostIt: postIt = new postIt('yellow', 'Superbe!', 'green');
+let myFirstPostIt: PostIt = new PostIt('orange', 'Idea 1', 'blue');
+let mySecondPostIt: PostIt = new PostIt('pink', 'Awesome', 'black');
+let myThirdPostIt: PostIt = new PostIt('yellow', 'Superbe!', 'green');
 
 console.log(myFirstPostIt, mySecondPostIt, myThirdPostIt);
