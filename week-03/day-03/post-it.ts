@@ -4,6 +4,7 @@ export class PostIt {
     backgroundColor: string;
     textOnIt: string;
     textColor: string;
+    
     constructor(backColor: string, text: string, textColor: string) {
         this.backgroundColor = backColor;
         this.textOnIt = text;

@@ -5,6 +5,7 @@ export class BlogPost {
     title: string;
     text: string;
     publicationDate: string;
+    
     constructor(name: string, title: string, text: string, date: string) {
         this.authorName = name;
         this.title = title;
