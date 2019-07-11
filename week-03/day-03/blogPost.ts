@@ -5,7 +5,7 @@ export class BlogPost {
     title: string;
     text: string;
     publicationDate: string;
-    
+
     constructor(name: string, title: string, text: string, date: string) {
         this.authorName = name;
         this.title = title;
@@ -13,6 +13,7 @@ export class BlogPost {
         this.publicationDate = date;
     }
 }
+
 
 let myFirstPost: BlogPost = new BlogPost('John Doe', 'Lorem Ipsum', 'Lorem ipsum dolor sit amet.', '2000.05.04.');
 let mySecondPost: BlogPost = new BlogPost('Tim Urban', 'Wait but why', 'A popular long-form, stick-figure-illustrated blog about almost everything.', '2010.10.10.');
