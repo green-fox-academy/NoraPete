@@ -1,6 +1,6 @@
 'use strict';
 
-import { Sharpie } from '../../day-03/sharpie';
+import { Sharpie } from '../day-03/sharpie';
 
 class SharpieSet {
     setOfSharpies: Sharpie[];

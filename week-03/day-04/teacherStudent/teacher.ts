@@ -1,6 +1,6 @@
 'use strict';
 
-import {Student} from './student';
+import { Student } from './student';
 
 class Teacher {
 
@@ -13,4 +13,4 @@ class Teacher {
     }
 }
 
-export {Teacher};
+export { Teacher };

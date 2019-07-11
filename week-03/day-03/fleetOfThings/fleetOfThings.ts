@@ -50,7 +50,6 @@ class FleetOfThings {
             }
             returnMessage += element.getName() + '\n';
         })
-
         return returnMessage;
     }
 }

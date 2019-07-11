@@ -7,4 +7,4 @@ class Domino {
     }
 }
 
-export {Domino};
+export { Domino };

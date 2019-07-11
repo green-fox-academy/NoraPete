@@ -18,6 +18,8 @@ class Animal {
     }
 }
 
+export { Animal };
+
 let waczak: Animal = new Animal;
 console.log(waczak);
 waczak.play();
