@@ -17,7 +17,7 @@ let aircraftNine: F16 = new F16();
 let aircraftTen: F35 = new F35();
 let aircraftEleven: F16 = new F16();
 let myCarrier: Carrier = new Carrier(3000, 3000);
-let yourCarrier: Carrier = new Carrier(10, 200);
+let yourCarrier: Carrier = new Carrier(10, 6000);
 
 myCarrier.add(aircraftOne);
 myCarrier.add(aircraftTwo);
@@ -31,7 +31,10 @@ myCarrier.add(aircraftNine);
 myCarrier.add(aircraftTen);
 myCarrier.add(aircraftEleven);
 
-//myCarrier.getStatus();
 
 myCarrier.fill();
 myCarrier.getStatus();
+
+myCarrier.fight(yourCarrier);
+myCarrier.getStatus();
+yourCarrier.getStatus();

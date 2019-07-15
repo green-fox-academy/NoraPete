@@ -4,7 +4,7 @@ import Aircraft from './aircraft';
 
 class Carrier {
     listOfAircrafts: Aircraft[];
-    storedAmmo: number;
+    storedAmmo: number = 0;
     healthPoints: number;
 
     constructor(storedAmmo: number, healthPoints: number) {
@@ -18,14 +18,17 @@ class Carrier {
     }
 
     fill(): void {
-        this.listOfAircrafts.forEach(function (aircraft) {
-            if (aircraft.isPriority) {
-                aircraft.refill(this.storedAmmo);
-            }
+       let ammoToUse: number = this.storedAmmo;
+        let priorityList: Aircraft[] = this.listOfAircrafts.filter(function (aircraft) {
+                return (aircraft.isPriority())
+        });
+        priorityList.forEach(function (aircraft) {
+            ammoToUse = aircraft.refill(ammoToUse);
         })
         this.listOfAircrafts.forEach(function (aircraft) {
-                aircraft.refill(this.storedAmmo);
+            ammoToUse = aircraft.refill(ammoToUse);
         })
+        this.storedAmmo = ammoToUse;
     }
 
     fight(carrierToFight: Carrier): void {

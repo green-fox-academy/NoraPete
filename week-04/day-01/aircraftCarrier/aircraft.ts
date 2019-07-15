@@ -21,10 +21,11 @@ class Aircraft {
         let neededAmmo: number = this.maxAmmo - this.ammoStorage;
         if (providedAmmo <= neededAmmo) {
             this.ammoStorage += providedAmmo;
+            return 0;
         } else {
             this.ammoStorage = this.maxAmmo;
+            return providedAmmo - neededAmmo;
         }
-        return providedAmmo - neededAmmo;
     }
 
     getType(): string {
@@ -32,7 +33,7 @@ class Aircraft {
     }
 
     getStatus(): string {
-        return `Type ${this.type}, Ammo: ${this.ammoStorage}, Base Damage: ${this.baseDamage}, All Damage: ${this.ammoStorage * this.baseDamage}`;
+        return `Type ${0}, Ammo: ${this.ammoStorage}, Base Damage: ${this.baseDamage}, All Damage: ${this.ammoStorage * this.baseDamage}`;
     }
 
     isPriority(): boolean {
