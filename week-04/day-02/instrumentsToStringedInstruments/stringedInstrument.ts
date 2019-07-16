@@ -5,11 +5,9 @@ import Instrument from './instrument';
 abstract class StringedInstrument extends Instrument {
     numberOfStrings: number;
 
-    constructor(name: string, numOfStrg?: number) {
+    constructor(name: string, numOfStrg: number) {
         super(name);
-        if (numOfStrg) {
-            this.numberOfStrings = numOfStrg;
-        }
+        this.numberOfStrings = numOfStrg;
     }
 
     abstract sound(): string

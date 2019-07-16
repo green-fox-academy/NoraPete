@@ -3,7 +3,6 @@
 import StringedInstrument from './stringedInstrument';
 
 class BassGuitar extends StringedInstrument {
-    numberOfStrings: number;
 
     constructor(numOfStrg: number = 4) {
         super('Bass Guitar', numOfStrg);
