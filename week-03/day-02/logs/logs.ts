@@ -19,18 +19,18 @@ try {
     logBook = '';
 }
 try {
-    logLines = logBook.split('/');
+    logLines = logBook.split('\n');
 } catch (e) {
-    console.log('couldn\'t split by /');
+    console.log('couldn\'t split by new line');
     logLines = [];
 }
 try {
     logLines.forEach(function (element) {
-        let lineArray: string[] = element.split('  ');
+        let lineArray: string[] = element.split('   ');
         splitLogLines.push(lineArray);
     })
 } catch (e) {
-    console.log('couldn\'t divide by double spaces');
+    console.log('couldn\'t divide by triple spaces');
 }
 
 function uniqueIPs(log: string[][]): string[] {

@@ -1,9 +1,8 @@
 'use strict';
 
 function powerN(base: number, power: number): number {
-    let out: number = 1;
-    out *= base;
-    if(power > 0) {
+    let out: number = base;
+    if(power > 1) {
         out *= powerN(base, power - 1);
     }
     return out;

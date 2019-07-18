@@ -44,4 +44,4 @@ function drawsHexagonOfHexagons(numOfHexagonsInOneSide: number): void {
     }
 }
 
-drawsHexagonOfHexagons(100);
+drawsHexagonOfHexagons(10);
