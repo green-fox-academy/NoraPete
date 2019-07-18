@@ -25,6 +25,11 @@ test(t => {
 })
 
 test(t => {
-    t.equals(checksIfTheyAreAnagrams('apple', 'seppa'), true);
+    t.equals(checksIfTheyAreAnagrams('apple', 'seppa'), false);
+    t.equals(checksIfTheyAreAnagrams('apple', 'leppa'), true);
+    t.equals(checksIfTheyAreAnagrams('Apple', 'leppa'), true);
+    t.equals(checksIfTheyAreAnagrams('apple', 'Leppa'), true);
+    t.equals(checksIfTheyAreAnagrams('apple', 'leppas'), false);
+    t.equals(checksIfTheyAreAnagrams('ap ple', 'leppa'), true);
     t.end();
 })

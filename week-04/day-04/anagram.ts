@@ -1,9 +1,15 @@
 'use strict';
 
 export function checksIfTheyAreAnagrams(wordOne: string, wordTwo: string): boolean {
-    for (let i: number = 0; i < wordOne.length; i ++) {
-        if (wordTwo.indexOf(wordOne.charAt(i)) < 0) {
-            return false;
+    let characterArrayOfWordOne: string[] = wordOne.toLowerCase().replace(/\s/g, '').split('').sort();
+    let characterArrayOfWordTwo: string[] = wordTwo.toLowerCase().replace(/\s/g, '').split('').sort();
+    if (characterArrayOfWordOne.length != characterArrayOfWordTwo.length) {
+        return false;
+    }else {
+        for (let i: number = 0; i < characterArrayOfWordOne.length; i ++) {
+            if (characterArrayOfWordOne[i] != characterArrayOfWordTwo[i]) {
+                return false;
+            }
         }
     }
     return true;
