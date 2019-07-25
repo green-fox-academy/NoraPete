@@ -1,6 +1,9 @@
 node_modules
-ticTacToe
-greatestCommonDivisor.ts
 package-lock.json
 package.json
 
+ticTacToe
+greatestCommonDivisor.ts
+josephusProblem.ts
+extension.ts
+extensionTest.ts
