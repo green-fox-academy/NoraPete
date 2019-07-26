@@ -16,7 +16,7 @@ function readsFile(path: string): string {
 function getsSingleLinesAsAMatrix(inputStr: string): string[][] {
     let lines: string[] = inputStr.split('\r\n');
     let matrix: string[][] = [];
-    for (let i: number = 0; i < lines.length; i ++) {
+    for (let i: number = 0; i < lines.length; i++) {
         matrix.push(lines[i].split(''));
     }
     return matrix;
@@ -32,7 +32,7 @@ function correctsReversedLines(path: string): void {
     }
     let contentMatrix: string[][] = getsSingleLinesAsAMatrix(fileContent);
     let correctLines: string[] = [];
-    for (let i: number = 0; i < contentMatrix.length; i ++) {
+    for (let i: number = 0; i < contentMatrix.length; i++) {
         correctLines.push(contentMatrix[i].reverse().join(''));
     }
     let correctText: string = correctLines.join('\r\n');
