@@ -1,0 +1,24 @@
+.container {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.container div{
+  width: 190px;
+  height: 190px;
+}
+
+.itemGreen {
+  background-color:rgb(81, 212, 0);
+  flex-grow: 1;
+}
+
+.itemYellow {
+  background-color: rgb(255, 214, 42);
+  flex-grow: 2;
+}
+
+.itemPurple {
+  background-color: rgb(176, 42, 255);
+  flex-grow: 1;
+}
