@@ -1,0 +1,14 @@
+.container {
+  display: flex;
+  background-color: rgb(255, 214, 42);
+  width: 750px;
+  height: 280px;
+  justify-content: center;
+  align-items: center;
+}
+
+.itemPurple {
+  background-color: rgb(176, 42, 255);
+  width: 100px;
+  height: 100px;
+}
