@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Workshop: CreateElement</title>
+  </head>
+  <body>
+    <ul class="asteroids">
+      <li>The King</li>
+    </ul>
+
+    <script>
+      'use strict';
+
+      const planetData = [
+        {
+          category: 'inhabited',
+          content: 'Foxes',
+          asteroid: true,
+        },
+        {
+          category: 'inhabited',
+          content: 'Whales and Rabbits',
+          asteroid: true,
+        },
+        {
+          category: 'uninhabited',
+          content: 'Baobabs and Roses',
+          asteroid: true,
+        },
+        {
+          category: 'inhabited',
+          content: 'Giant monsters',
+          asteroid: false,
+        },
+        {
+          category: 'inhabited',
+          content: 'Sheep',
+          asteroid: true,
+        },
+      ];
+
+      function addAsteroidsAsListElements(planet) {
+        let parentList = document.querySelector('.asteroids');
+        if (planet.asteroid) {
+          let newListElement = document.createElement('li');
+          newListElement.textContent = planet.content;
+          newListElement.classList.add(planet.category);
+          parentList.appendChild(newListElement);
+        }
+      }
+      
+      let asteroidList = document.querySelector('.asteroids');
+      let king = document.querySelector('.asteroids > li');
+      asteroidList.removeChild(king);
+      planetData.forEach(function (planet) {
+        addAsteroidsAsListElements(planet);
+      })
+      
+    </script>
+
+    <!-- You can work in the html or in a separate js file. Like:
+
+    <script>
+      Remove the king from the list.
+
+      Fill the list based on the following list of objects.
+      Only add the asteroids to the list.
+      Each list item should have its category as a class and its content as text content. -->
+
+      
+    <!-- </script>
+
+    OR
+
+    <script src="createelement-2.js"></script> -->
+  </body>
+</html>
