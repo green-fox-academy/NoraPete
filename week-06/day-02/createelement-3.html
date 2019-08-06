@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Workshop: CreateElement</title>
+  <style>
+    div#pets {
+      background-color: crimson;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="pets"></div>
+
+  <script>
+    'use strict';
+
+    const kids = [
+      { 'petName': 'Wattled crane', 'owner': 'Bryant' },
+      { 'petName': 'Devil, tasmanian', 'owner': 'Alejandro' },
+      { 'petName': 'Mynah, common', 'owner': 'Nelie' },
+      { 'petName': 'Dolphin, common', 'owner': 'Mariele' },
+      { 'petName': 'Gray duiker', 'owner': 'Maddalena' },
+      { 'petName': 'Crab (unidentified)', 'owner': 'Lucine' },
+      { 'petName': 'Ant (unidentified)', 'owner': 'Lorianna' },
+      { 'petName': 'Bison, american', 'owner': 'Tommie' },
+      { 'petName': 'Yellow mongoose', 'owner': 'Vivyan' },
+      { 'petName': 'Carpet snake', 'owner': 'Veda' },
+      { 'petName': 'Lesser mouse lemur', 'owner': 'Isidor' },
+    ];
+
+    function addsArticleWithPet(pet) {
+      let petsList = document.querySelector('#pets');
+      let newArticle = document.createElement('article');
+      let owner = document.createElement('h3');
+      let name = document.createElement('p');
+      owner.textContent = pet.owner;
+      name.textContent = pet.petName;
+      newArticle.appendChild(owner);
+      newArticle.appendChild(name);
+      petsList.appendChild(newArticle);
+    }
+
+    kids.forEach(function (pet) {
+      addsArticleWithPet(pet);
+    })
+  </script>
+
+  <!-- You can work in the html or in a separate js file. Like:
+
+    <script>
+
+      1) Create an <article> element for each kid
+
+      2) Create a <h3> and a <p> element for each article and append them as a child to the <article>
+          - The H3 should contain the owner's name
+          - The p should contain the pet's name
+
+      3) Add the article to the pets div.
+    </script>
+
+    OR
+
+    <script src="createelement-3.js"></script> -->
+</body>
+
+</html>
