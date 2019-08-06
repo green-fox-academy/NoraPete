@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <title>Workshop: innerHTML, textContent</title>
+    <link href="./style.css" rel="stylesheet" type="text/css">
   </head>
   <body>
     <ul>
@@ -20,7 +21,7 @@
       listElements[contentList.indexOf(word)].innerText = word;
     })
 
-    
+    document.querySelector('ul').classList.add('limeGreenBackground');
     </script>
     <!-- You can work in the html or in a separate js file. Like:
 
