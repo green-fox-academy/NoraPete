@@ -12,11 +12,15 @@
       <li>placeholder</li>
     </ul>
     <script>
+      'use strict';
+
     let contentList = ['apple', 'banana', 'cat', 'dog'];
     let listElements = document.querySelectorAll('li');
     contentList.forEach(function (word) {
       listElements[contentList.indexOf(word)].innerText = word;
     })
+
+    
     </script>
     <!-- You can work in the html or in a separate js file. Like:
 
