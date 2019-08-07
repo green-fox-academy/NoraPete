@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Forecast for <%= database[city].city %></title>
+  </head>
+  <body>
+    <% for (let i = 0; i < database[city].weather.length; i ++) { %>
+    <div>
+        <% if (database[city].weather[i].icon === 'cloudy') { %>
+          <img src="cloudy.png">
+          <% } else if (database[city].weather[i].icon === 'partly_cloudy') { %>
+          <img src="partly_cloudy.png">
+          <% } else if (database[city].weather[i].icon === 'sunny') { %>
+            <img src="sunny.png">
+          <% } else if (database[city].weather[i].icon === 'rainy') { %>
+            <img src="rainy.png">
+          <% } else if (database[city].weather[i].icon === 'snowy') { %>
+            <img src="snowy.png">
+          <% } %>
+          <div class="temp">
+            <p><%= database[city].weather[i].temp %> °C</p>
+          </div>
+          <div class="message">
+            <p><%= database[city].weather[i].message %></p>
+          </div>
+    </div>
+    <% } %>
+  </body>
+</html>
