@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Cocktails</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
   </head>
   <body>
     <h1>Cocktails</h1>
@@ -10,24 +11,24 @@
       <%= list[i] %>
     <% } %></h2>
     <ul>
-      <li>
-        <div>Name</div>
-        <div>Price</div>
+      <li class="titleBar">
+        <div class="name">Name</div>
+        <div class="price">Price</div>
       </li>
       <% for (let i = 0; i < database.length; i ++) { %>
         <% if (!searched || database[i].contains.indexOf(searched) >= 0) { %>
         <li>
-            <div>
+            <div class="name">
               <p><%= database[i].name %>
                 <% if (!database[i].isAlcoholic) { %>
                   (non alcoholic)
                <% } %>
               </p>
-              <p><% database[i].contains.forEach(function (component) { %>
+              <p class="components"><% database[i].contains.forEach(function (component) { %>
                 <%= component + ',' %>
               <% }) %></p>
             </div>
-            <div><%= database[i].price %> Ft</div>
+            <div class="price"><%= database[i].price %> Ft</div>
           </li>
      <% } %>
      <% } %>

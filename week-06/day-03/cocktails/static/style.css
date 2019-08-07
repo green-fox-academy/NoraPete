@@ -1,0 +1,33 @@
+h1{
+  color: red;
+}
+
+ul{
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+}
+
+li{
+  display: flex;
+  align-items: center;
+  background-color: lightgray;
+}
+
+li:nth-child(odd){
+  background-color: darkgray;
+}
+
+.name{
+  width: 75%;
+}
+
+.price{
+  width: 25%;
+  text-align: center;
+}
+
+.titleBar{
+  text-align: center;
+  margin-bottom: 5px;
+}
