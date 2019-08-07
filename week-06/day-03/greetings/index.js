@@ -5,10 +5,10 @@ const PORT = 3000;
 
 app.set('view engine', 'ejs');
 
-app.get('/helloworld', (req, res) => {
-  res.render('home', {title: 'Hello World!',})
+app.get('/', (req, res) => {
+  res.render('home', {name: req.query.name || 'Guest'})
 })
 
 app.listen(PORT, () => {
-  console.log(`App is listening on port ${PORT}`);
-})
+  console.log(`App is listening on port ${PORT}`)
+});
