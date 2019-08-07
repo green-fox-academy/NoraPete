@@ -15,6 +15,7 @@
         <div>Price</div>
       </li>
       <% for (let i = 0; i < database.length; i ++) { %>
+        <% if (!searched || database[i].contains.indexOf(searched) >= 0) { %>
         <li>
             <div>
               <p><%= database[i].name %>
@@ -26,8 +27,9 @@
                 <%= component + ',' %>
               <% }) %></p>
             </div>
-            <div><%= database[i].price %></div>
+            <div><%= database[i].price %> Ft</div>
           </li>
+     <% } %>
      <% } %>
     </ul>
   </body>
