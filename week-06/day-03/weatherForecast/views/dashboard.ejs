@@ -14,17 +14,7 @@
         <div class="temperature">
          <h2> <%= database[i].weather[0].temp %> °C </h2>
         </div>
-        <% if (database[i].weather[0].icon === 'cloudy') { %>
-        <img src="cloudy.png">
-        <% } else if (database[i].weather[0].icon === 'partly_cloudy') { %>
-        <img src="partly_cloudy.png">
-        <% } else if (database[i].weather[0].icon === 'sunny') { %>
-          <img src="sunny.png">
-        <% } else if (database[i].weather[0].icon === 'rainy') { %>
-          <img src="rainy.png">
-        <% } else if (database[i].weather[0].icon === 'snowy') { %>
-          <img src="snowy.png">
-        <% } %>
+        <img src=<%= '/' + database[i].weather[0].icon + '.png' %>>
       </buton>
       <% } %>
   </body>

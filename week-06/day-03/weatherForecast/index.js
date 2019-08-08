@@ -68,8 +68,8 @@ app.get('/', (req, res) => {
   res.render('dashboard', {database: forecasts});
 })
 
-app.get('/cities/:city', (req, res) => {
-  res.render('detailed', {database: forecasts, city: req.params.city});
+app.get('/cities/:place', (req, res) => {
+  res.render('detailed', {database: forecasts, place: req.params.place});
 })
 
 app.listen(PORT, () => {
