@@ -27,11 +27,7 @@ let leftArrow = document.querySelectorAll('button')[0];
 let rightArrow = document.querySelectorAll('button')[1];
 
 function getPosition(num, list) {
-  if (num < 0) {
-    return num % list.length + list.length;
-  } else {
-    return num % list.length;
-  }
+  return ((num % list.length) + list.length) % list.length;
 }
 
 function createImage(image, parent, onclick) {
@@ -39,16 +35,20 @@ function createImage(image, parent, onclick) {
   pic.setAttribute('src', image.link);
   parent.appendChild(pic);
   if (onclick) {
-    pic.onclick = () => {
+    pic.onclick = function() {
       counter = database.indexOf(image);
       changeDisplayBlock(database, counter);
+      changeStateOnThumbnail(thumbnailList, counter);
     }
   }
 }
 
 function changeStateOnThumbnail(list, numOfClicks) {
   let position = getPosition(numOfClicks, database);
-  list[position].toggleAttribute('selected');
+  for (let i = 0; i < list.length; i ++) {
+    list[i].classList.remove('selected');
+  }
+  list[position].classList.add('selected');
 }
 
 function changeDisplayBlock(data, numOfClicks) {
@@ -58,6 +58,16 @@ function changeDisplayBlock(data, numOfClicks) {
   imageDescription.textContent = selectedPic.description;
 }
 
+function arrowClick(isRight) {
+  if (isRight) {
+    counter++;
+  } else {
+    counter--;
+  }
+  changeDisplayBlock(database, counter);
+  changeStateOnThumbnail(thumbnailList, counter);
+}
+
 database.forEach(function (pic) {
   createImage(pic, thumbnailsDiv, true);
 });
@@ -65,15 +75,7 @@ database.forEach(function (pic) {
 let thumbnailList = document.querySelector('.thumbnails').children;
 
 changeDisplayBlock(database, counter);
+changeStateOnThumbnail(thumbnailList, counter);
 
-leftArrow.onclick = () => {
-  counter--;
-  changeDisplayBlock(database, counter);
-  changeStateOnThumbnail(thumbnailList, counter);
-}
-
-rightArrow.onclick = () => {
-  counter++;
-  changeDisplayBlock(database, counter);
-  changeStateOnThumbnail(thumbnailList, counter);
-}
+leftArrow.onclick = () => { arrowClick(false) };
+rightArrow.onclick = () => { arrowClick(true) };
