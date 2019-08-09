@@ -1,3 +1,39 @@
-h1{
-  color: red;
+*{
+  margin: 0;
+  padding: 0;
+  color: black;
+  text-decoration: none;
+  font-weight: normal;
+}
+
+div{
+  width: 100px;
+  height: 100px;
+  display: flex;
+}
+
+
+
+.display{
+  height: 400px;
+  width: 700px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.image{
+  flex-grow: 1;
+  align-content: center;
+}
+
+.image > div{
+  float: left;
+}
+
+.thumbnails{
+  height: 100px;
+  width: 700px;
+  overflow: scroll;
+  margin: auto;
 }
