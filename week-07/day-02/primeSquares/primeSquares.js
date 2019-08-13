@@ -25,11 +25,15 @@ let divs = document.querySelectorAll('div');
 let counter = 0;
 
 
-setInterval(function () {
+
+let intervalID = setInterval(function () {
   if (primeValidator(counter + 1)) {
     divs[counter].classList.add('prime');
   } else {
     divs[counter].classList.add('not-prime');
+  }
+  if (counter === divs.length - 1) {
+    clearInterval(intervalID);
   }
   counter++;
 }, 100);
