@@ -25,7 +25,21 @@ app.get('/doubling', (req, res) => {
   } else {
     res.send(error);
   }
-})
+});
+
+app.get('/greeter', (req, res) => {
+  if (!req.query.name && !req.query.title) {
+    res.send({ 'error': 'Please provide a name and a title!' });
+  } else if (!req.query.name) {
+    res.send({ 'error': 'Please provide a name!' });
+  } else if (!req.query.title) {
+    res.send({ 'error': 'Please provide a title!' });
+  } else {
+    res.send({
+      'welcome_message': 'Oh, hi there ' + req.query.name + ', my dear ' + req.query.title + '!'
+    });
+  }
+});
 
 app.listen(PORT, () => {
   console.log(`App is up and running on port ${PORT}`);
