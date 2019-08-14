@@ -7,6 +7,7 @@ const PORT = 8080;
 const app = express();
 
 app.use(express.static('static'));
+app.use(express.json());
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
@@ -58,6 +59,33 @@ app.get('/appenda/:appendable', (req, res) => {
     res.status(404);
   }
   */
+});
+/*
+*/
+app.post('/dountil/:action', (req, res) => {
+  let inputNum = req.body.until * 1;
+  let outputNum;
+  if (isNaN(inputNum)) {
+    res.send({
+      'error': 'Please provide a number!'
+    });
+  } else if (req.params.action === 'sum') {
+    outputNum = 0;
+    for (let i = 0; i <= inputNum; i ++) {
+      outputNum += i;
+    }
+    res.send({
+      'result': outputNum
+    });
+  } else if (req.params.action === 'factor') {
+    outputNum = 1;
+    for (let i = 1; i <= inputNum; i ++) {
+      outputNum *= i;
+    }
+    res.send({
+      'result': outputNum
+    });
+  }
 });
 
 app.listen(PORT, () => {
