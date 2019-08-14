@@ -43,49 +43,41 @@ app.get('/greeter', (req, res) => {
 });
 
 app.get('/appenda/:appendable', (req, res) => {
-  try {
-    res.send({
+   res.send({
       'appended': req.params.appendable + 'a'
     });
-  } catch (e) {
-    res.status(404);
-  }
-  /*
-  if (req.params.appendable) {
-    res.send({
-      'appended': req.params.appendable + 'a'
-    });
-  } else {
-    res.status(404);
-  }
-  */
 });
-/*
-*/
+
 app.post('/dountil/:action', (req, res) => {
   let inputNum = req.body.until * 1;
   let outputNum;
-  if (isNaN(inputNum)) {
-    res.send({
-      'error': 'Please provide a number!'
-    });
-  } else if (req.params.action === 'sum') {
+  let response = {};
+
+  function addNumsUntil() {
     outputNum = 0;
     for (let i = 0; i <= inputNum; i ++) {
       outputNum += i;
     }
-    res.send({
-      'result': outputNum
-    });
-  } else if (req.params.action === 'factor') {
+    response = { 'result': outputNum };
+  }
+
+  function getFactorial() {
     outputNum = 1;
     for (let i = 1; i <= inputNum; i ++) {
       outputNum *= i;
     }
-    res.send({
-      'result': outputNum
-    });
+    response = { 'result': outputNum };
   }
+
+  if (isNaN(inputNum)) {
+    response = { 'error': 'Please provide a number!' };
+  } else if (req.params.action === 'sum') {
+    addNumsUntil();
+  } else if (req.params.action === 'factor') {
+    getFactorial();
+  }
+
+  res.send(response);
 });
 
 app.listen(PORT, () => {
