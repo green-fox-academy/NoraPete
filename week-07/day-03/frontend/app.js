@@ -81,10 +81,18 @@ app.post('/dountil/:action', (req, res) => {
 });
 
 app.post('/arrays', (req, res) => {
-  let nums = req.body.numbers;
-  let what = req.body.what;
   let response = {};
-
+  let nums;
+  let what;
+  if (!req.body.numbers || !req.body.what) {
+    response = { 'error': 'Please provide what to do with the numbers!' };
+    nums = [];
+    what = '';
+  } else {
+    nums = req.body.numbers;
+    what = req.body.what;
+  }
+  
   function addNums() {
     let outputNum = 0;
     for (let i = 0; i < nums.length; i ++) {
@@ -109,9 +117,7 @@ app.post('/arrays', (req, res) => {
     response = { 'result': output };
   }
 
-  if(!nums || !what) {
-    response = { 'error': 'Please provide what to do with the numbers!' }
-  } else if (what === 'sum') {
+  if (what === 'sum') {
     addNums();
   } else if (what === 'multiply') {
     multiplyNums();
