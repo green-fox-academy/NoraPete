@@ -80,6 +80,47 @@ app.post('/dountil/:action', (req, res) => {
   res.send(response);
 });
 
+app.post('/arrays', (req, res) => {
+  let nums = req.body.numbers;
+  let what = req.body.what;
+  let response = {};
+
+  function addNums() {
+    let outputNum = 0;
+    for (let i = 0; i < nums.length; i ++) {
+      outputNum += nums[i];
+    }
+    response = { 'result': outputNum };
+  }
+
+  function multiplyNums() {
+    let outputNum = 1;
+    for (let i = 0; i < nums.length; i ++) {
+      outputNum *= nums[i];
+    }
+    response = { 'result': outputNum };
+  }
+
+  function doubleNums() {
+    let output = [];
+    for (let i = 0; i < nums.length; i ++) {
+      output.push(nums[i] * 2);
+    }
+    response = { 'result': output };
+  }
+
+  if(!nums || !what) {
+    response = { 'error': 'Please provide what to do with the numbers!' }
+  } else if (what === 'sum') {
+    addNums();
+  } else if (what === 'multiply') {
+    multiplyNums();
+  } else if (what === 'double') {
+    doubleNums();
+  }
+  res.send(response);
+});
+
 app.listen(PORT, () => {
   console.log(`App is up and running on port ${PORT}`);
 });
