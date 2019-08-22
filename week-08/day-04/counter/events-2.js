@@ -8,6 +8,6 @@ function countElements(list) {
   return list.length;
 }
 
-button.addEventListener('click', function() {
+button.addEventListener('click', function () {
   result.innerHTML = countElements(liTags);
 })
