@@ -31,21 +31,18 @@ function moveDown() {
 }
 
 document.querySelector('nav').addEventListener('click', function (e) {
-  if(e.target.dataset.action === 'move') {
-    if (e.target.dataset.direction === 'up') {
+  let direction = e.target.dataset.direction;
+    if (direction === 'up') {
       moveUp();
-    } else if (e.target.dataset.direction === 'down') {
+    } else if (direction === 'down') {
       moveDown();
-    } else if (e.target.dataset.direction === 'right') {
+    } else if (direction === 'right') {
       moveRight();
-    } else if (e.target.dataset.direction === 'left') {
+    } else if (direction === 'left') {
       moveLeft();
-    }
-  } else if (e.target.dataset.action === 'zoom') {
-    if (e.target.dataset.direction === 'in') {
+    } else if (direction === 'in') {
       zoomIn();
-    } else if (e.target.dataset.direction === 'out') {
+    } else if (direction === 'out') {
       zoomOut();
     }
-  }
 });
