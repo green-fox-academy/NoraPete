@@ -7,6 +7,8 @@ function logTimestamp() {
   console.log(Date.now());
 }
 
+//Solution one
+/*
 button.addEventListener('click', logTimestamp);
 
 button.addEventListener('click', function () {
@@ -18,3 +20,10 @@ button.addEventListener('click', function () {
     button.removeEventListener('click', logTimestamp);
   }
 });
+*/
+//Solution two
+
+button.addEventListener('click', function (e) {
+  logTimestamp();
+  e.target.disabled = true;
+})
