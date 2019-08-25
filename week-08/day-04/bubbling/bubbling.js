@@ -6,43 +6,34 @@ let size = 100;
 let positionX = 0;
 let positionY = 0;
 
-function zoomIn() {
-  imageInspector.style.backgroundSize = `${size += 20}%`;
+function zoom(direction) {
+  imageInspector.style.backgroundSize = `${size += direction}%`;
 }
 
-function zoomOut() {
-  imageInspector.style.backgroundSize = `${size -= 20}%`;
-}
-
-function moveRight() {
-  imageInspector.style.backgroundPosition = `${positionX += 10}px ${positionY}px`;
-}
-
-function moveLeft() {
-  imageInspector.style.backgroundPosition = `${positionX -= 10}px ${positionY}px`;
-}
-
-function moveUp() {
-  imageInspector.style.backgroundPosition = `${positionX}px ${positionY -= 10}px`;
-}
-
-function moveDown() {
-  imageInspector.style.backgroundPosition = `${positionX}px ${positionY += 10}px`;
+function move(horizontal, vertical) {
+  imageInspector.style.backgroundPosition = `${positionX += horizontal}px ${positionY += vertical}px`;
 }
 
 document.querySelector('nav').addEventListener('click', function (e) {
   let direction = e.target.dataset.direction;
-    if (direction === 'up') {
-      moveUp();
-    } else if (direction === 'down') {
-      moveDown();
-    } else if (direction === 'right') {
-      moveRight();
-    } else if (direction === 'left') {
-      moveLeft();
-    } else if (direction === 'in') {
-      zoomIn();
-    } else if (direction === 'out') {
-      zoomOut();
-    }
+  switch(direction) {
+    case 'up':
+      move(0, -10);
+      break;
+    case 'down':
+      move(0, 10);
+      break; 
+    case 'right':
+      move(10, 0);
+      break;
+    case 'left':
+      move(-10, 0);
+      break;
+    case 'in':
+      zoom(20);
+      break;
+    case 'out':
+      zoom(-20);
+      break;
+  }
 });
