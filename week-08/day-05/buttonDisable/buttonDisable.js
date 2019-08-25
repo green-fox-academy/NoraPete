@@ -8,6 +8,10 @@ let catFacts = document.querySelector('.fact');
 let pet;
 let fact;
 
+function checkIfFishAndNoSelected() {
+  return pet === 'fish' && fact === 'no';
+}
+
 favPet.addEventListener('change', function (e) {
   pet = e.target.value;
   signBtn.disabled = false;
@@ -15,11 +19,7 @@ favPet.addEventListener('change', function (e) {
 
 catFacts.addEventListener('change', function (e) {
   fact = e.target.value;
-  if (fact === 'yes') {
-    catBtn.disabled = false;
-  } else {
-    catBtn.disabled = true;
-  }
+  catBtn.disabled = fact !== 'yes';
 });
 
 catBtn.addEventListener('click', function () {
@@ -27,9 +27,8 @@ catBtn.addEventListener('click', function () {
 });
 
 signBtn.addEventListener('click', function () {
-  if(pet === 'fish' && fact === 'no') {
-    alert('Sigh, we still added you to the cat facts list');
-  } else {
-    alert('Thank you, you\'ve successfully signed up for cat facts');
-  }
+  let message = checkIfFishAndNoSelected()
+    ? 'Sigh, we still added you to the cat facts list'
+    : 'Thank you, you\'ve successfully signed up for cat facts';
+  alert(message);
 });
