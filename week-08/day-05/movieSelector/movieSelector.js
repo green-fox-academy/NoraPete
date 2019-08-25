@@ -2,7 +2,7 @@
 
 const genreDropDown = document.querySelector('#genre');
 const movieDropDown = document.querySelector('#movie');
-const selectedMovie = document.querySelector('span');
+const movieSpan = document.querySelector('span');
 
 const movieDB = [
   { genre: 'sci-fi', value: '2001: A Space Odyssey' },
@@ -16,14 +16,7 @@ const movieDB = [
 ];
 
 function displaySelectedMovie(movie) {
-  selectedMovie.innerText = movie;
-}
-
-function renderMovieAsOption(movie) {
-  let movieToAdd = document.createElement('option');
-  movieToAdd.innerText = movie.value;
-  movieToAdd.setAttribute('value', movie.value);
-  movieDropDown.appendChild(movieToAdd);
+  movieSpan.innerText = movie;
 }
 
 function clearMovieOptions() {
@@ -33,17 +26,24 @@ function clearMovieOptions() {
   }
 }
 
-function updateMovieOptions(genre) {
+function renderMovieAsOption(movie) {
+  let movieToAdd = document.createElement('option');
+  movieToAdd.innerText = movie.value;
+  movieToAdd.setAttribute('value', movie.value);
+  movieDropDown.appendChild(movieToAdd);
+}
+
+function filterDatabase(filter) {
+  return movieDB.filter(function (movie) {
+    return movie.genre === filter;
+  });
+}
+
+function updateMovieOptions(genre = '') {
   clearMovieOptions();
-  if (genre) {
-    movieDB.forEach(function (movie) {
-      if (movie.genre === genre) {
-        renderMovieAsOption(movie);
-      }
-    });
-  } else {
-    movieDB.forEach(renderMovieAsOption);
-  }
+  let optionalMovies;
+  genre ? optionalMovies = filterDatabase(genre) : optionalMovies = movieDB;
+  optionalMovies.forEach(renderMovieAsOption);
 }
 
 movieDropDown.addEventListener('change', function (e) {
@@ -54,7 +54,6 @@ genreDropDown.addEventListener('change', function (e) {
   updateMovieOptions(e.target.value);
 });
 
-
 window.addEventListener('load', function () {
-  movieDB.forEach(renderMovieAsOption);
+  updateMovieOptions();
 });
