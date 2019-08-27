@@ -1,6 +1,5 @@
 'use strict';
 
-
 function sendGetRequest(url, callback) {
   const xhr = new XMLHttpRequest();
   xhr.onreadystatechange = function () {
