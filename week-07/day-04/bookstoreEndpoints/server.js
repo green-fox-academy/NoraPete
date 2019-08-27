@@ -22,7 +22,7 @@ function filterBooks(books, key, value) {
 function handleQueries(request, books) {
   let outputBookList = books;
   if (request.query.category) {
-    outputBookList = filterBooks(books, 'cate_descrip', request.query.category);
+    outputBookList = filterBooks(outputBookList, 'cate_descrip', request.query.category);
   }
   if (request.query.publisher) {
     outputBookList = filterBooks(outputBookList, 'pub_name', request.query.publisher);
@@ -74,5 +74,5 @@ app.get('/books', function (req, res) {
 });
 
 app.listen(PORT, () => {
-  console.log(`Server is up and running on port ${PORT}`)
+  console.log(`Server is up and running on port ${PORT}`);
 });

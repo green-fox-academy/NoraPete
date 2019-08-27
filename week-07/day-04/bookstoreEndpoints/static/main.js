@@ -1,5 +1,43 @@
 'use strict';
 
+const form = document.querySelector('form');
+const category = document.querySelector('#category');
+const publisher = document.querySelector('#publisher');
+const minPrice = document.querySelector('#pgt');
+const maxPrice = document.querySelector('#plt');
+
+function getFilterParameters() {
+  let cat = '';
+  let pub = '';
+  let min = '';
+  let max = '';
+  if (category.value) {
+    cat = `?category=${category.value}`;
+  }
+  if (publisher.value) {
+    if (cat) {
+      pub = `&publisher=${publisher.value}`;
+    } else {
+      pub = `?publisher=${publisher.value}`;
+    }
+  }
+  if (minPrice.value) {
+    if (cat || pub) {
+      min = `&pgt=${minPrice.value}`;
+    } else {
+      min = `?pgt=${minPrice.value}`;
+    }
+  }
+  if (maxPrice.value) {
+    if (cat || pub || min) {
+      max = `&pgt=${maxPrice.value}`;
+    } else {
+      max = `?pgt=${maxPrice.value}`;
+    }
+  }
+  return `http://localhost:3000/books${cat}${pub}${min}${max}`;
+}
+
 function sendGetRequest(url, callback) {
   const xhr = new XMLHttpRequest();
   xhr.onreadystatechange = function () {
@@ -16,6 +54,9 @@ function sendGetRequest(url, callback) {
 }
 
 function renderSearchResults(response) {
+  if (document.querySelector('ul')) {
+    document.querySelector('main').removeChild(document.querySelector('ul'));
+  }
   let listOfBooks = document.createElement('ul');
   response.forEach(function (book) {
     listOfBooks.appendChild(collectBookInfo(book));
@@ -39,6 +80,12 @@ function getBookInfo(book, infoType) {
   return info;
 }
 
+
 window.onload = () => {
   sendGetRequest('http://localhost:3000/books', renderSearchResults);
 }
+
+form.addEventListener('submit', function (e) {
+  e.preventDefault();
+  sendGetRequest(getFilterParameters(), renderSearchResults);
+});
