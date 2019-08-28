@@ -23,13 +23,13 @@ connection.connect(function (err) {
   console.log('Connection with database is established');
 });
 
-app.get('/hello', function(req, res) {
+app.get('/hello', function (req, res) {
   res.send('Hello World!');
 });
 
-app.get('/posts', function(req, res) {
+app.get('/posts', function (req, res) {
   connection.query('SELECT * FROM posts;', (error, result) => {
-    if(error)  {
+    if (error) {
       console.log('Couldnt get data from the database', error);
       return;
     }
@@ -39,6 +39,24 @@ app.get('/posts', function(req, res) {
   });
 });
 
-app.listen(PORT, function() {
+app.post('/posts', function (req, res) {
+  connection.query('INSERT INTO posts SET ?', req.body, (insError, insResult) => {
+    if (insError) {
+      console.log('Couldn\'t insert data into database', insError);
+      return;
+    }
+    connection.query('SELECT * FROM posts WHERE id = ?', insResult.insertId, (readError, readResult) => {
+      if (readError) {
+        console.log('Couldn\'t get inserted row from database', readError);
+        return;
+      }
+      res.status(200);
+      res.setHeader('Contet-Type', 'application/json');
+      res.send(readResult[0]);
+    });
+  });
+});
+
+app.listen(PORT, function () {
   console.log(`Server is up and running on port ${PORT}`);
 });
