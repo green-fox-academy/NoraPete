@@ -57,6 +57,42 @@ app.post('/posts', function (req, res) {
   });
 });
 
+app.put('/posts/:id/upvote', function(req, res) {
+  connection.query('UPDATE posts SET score = score + 1 WHERE id = ?', req.params.id, (error, result) => {
+    if(error) {
+      console.log('Couldn\'t update database', error);
+      return;
+    }
+  });
+  connection.query('SELECT * FROM posts WHERE id = ?', req.params.id, (error, result) => {
+    if(error) {
+      console.log('Couldn\'t get updated row from database', error);
+      return;
+    }
+    res.status(200);
+    res.setHeader('Contet-Type', 'application/json');
+    res.send(result[0]);
+  });
+});
+
+app.put('/posts/:id/downvote', function(req, res) {
+  connection.query('UPDATE posts SET score = score - 1 WHERE id = ?', req.params.id, (error, result) => {
+    if(error) {
+      console.log('Couldn\'t update database', error);
+      return;
+    }
+  });
+  connection.query('SELECT * FROM posts WHERE id = ?', req.params.id, (error, result) => {
+    if(error) {
+      console.log('Couldn\'t get updated row from database', error);
+      return;
+    }
+    res.status(200);
+    res.setHeader('Contet-Type', 'application/json');
+    res.send(result[0]);
+  });
+});
+
 app.listen(PORT, function () {
   console.log(`Server is up and running on port ${PORT}`);
 });
