@@ -43,9 +43,9 @@ app.get('/greeter', (req, res) => {
 });
 
 app.get('/appenda/:appendable', (req, res) => {
-   res.send({
-      'appended': req.params.appendable + 'a'
-    });
+  res.send({
+    'appended': req.params.appendable + 'a'
+  });
 });
 
 app.post('/dountil/:action', (req, res) => {
@@ -55,7 +55,7 @@ app.post('/dountil/:action', (req, res) => {
 
   function addNumsUntil() {
     outputNum = 0;
-    for (let i = 0; i <= inputNum; i ++) {
+    for (let i = 0; i <= inputNum; i++) {
       outputNum += i;
     }
     response = { 'result': outputNum };
@@ -63,7 +63,7 @@ app.post('/dountil/:action', (req, res) => {
 
   function getFactorial() {
     outputNum = 1;
-    for (let i = 1; i <= inputNum; i ++) {
+    for (let i = 1; i <= inputNum; i++) {
       outputNum *= i;
     }
     response = { 'result': outputNum };
@@ -92,10 +92,10 @@ app.post('/arrays', (req, res) => {
     nums = req.body.numbers;
     what = req.body.what;
   }
-  
+
   function addNums() {
     let outputNum = 0;
-    for (let i = 0; i < nums.length; i ++) {
+    for (let i = 0; i < nums.length; i++) {
       outputNum += nums[i];
     }
     response = { 'result': outputNum };
@@ -103,7 +103,7 @@ app.post('/arrays', (req, res) => {
 
   function multiplyNums() {
     let outputNum = 1;
-    for (let i = 0; i < nums.length; i ++) {
+    for (let i = 0; i < nums.length; i++) {
       outputNum *= nums[i];
     }
     response = { 'result': outputNum };
@@ -111,7 +111,7 @@ app.post('/arrays', (req, res) => {
 
   function doubleNums() {
     let output = [];
-    for (let i = 0; i < nums.length; i ++) {
+    for (let i = 0; i < nums.length; i++) {
       output.push(nums[i] * 2);
     }
     response = { 'result': output };
@@ -124,6 +124,58 @@ app.post('/arrays', (req, res) => {
   } else if (what === 'double') {
     doubleNums();
   }
+  res.send(response);
+});
+
+app.post('/sith', function (req, res) {
+  function parseBodyText(request) {
+    let endOfSentence = /([.!?])\s/g;
+    let bodyText = request.body.text += ' ';
+    let sentences = bodyText.split(endOfSentence);
+    let wordMatrix = sentences.map(function (sentence) {
+      return sentence.split(' ');
+    });
+    return wordMatrix.slice(0, -1);
+  }
+
+  function getWordsOrGlyphs(forGlyphsInt, matrix) {
+    let outputList = matrix.filter(function (list) {
+      return matrix.indexOf(list) % 2 === forGlyphsInt;
+    });
+    return outputList;
+  }
+
+  function yodafySentence(sentence) {
+    let yodafiedSentence = [];
+    for (let i = 0; i < sentence.length; i += 2) {
+      if (sentence[i + 1]) {
+        yodafiedSentence.push(sentence[i + 1].toLowerCase());
+      }
+      yodafiedSentence.push(sentence[i].toLowerCase());
+    }
+    return yodafiedSentence;
+  }
+
+  function createSithText(request) {
+    let randomYodaSounds = ['Hmmm.', 'Err..err.err.', 'Uhm.', 'Arrgh.'];
+    let rawMatrix = parseBodyText(request);
+    let words = getWordsOrGlyphs(0, rawMatrix);
+    let glyphs = getWordsOrGlyphs(1, rawMatrix);
+    let outputMessage = [];
+    words.forEach(function (sentence) {
+      let swapped = yodafySentence(sentence).join(' ');
+      swapped = swapped.charAt(0).toUpperCase() + swapped.slice(1);
+      swapped += glyphs[words.indexOf(sentence)][0];
+      outputMessage.push(swapped);
+      outputMessage.push(randomYodaSounds[Math.floor(Math.random() * randomYodaSounds.length)]);
+    });
+    return outputMessage.join(' ');
+  }
+  let response;
+  req.body.text ? 
+    response = { sith_text: createSithText(req) } : 
+    response = { error: 'Feed me some text you have to, padawan young you are. Hmmm.' };
+  res.status(200);
   res.send(response);
 });
 
