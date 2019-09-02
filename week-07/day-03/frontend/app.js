@@ -179,6 +179,33 @@ app.post('/sith', function (req, res) {
   res.send(response);
 });
 
+app.post('/translate', function(req, res) {
+  function translateToTeve(inputStr) {
+    let re = /([aáeéiíoóöőuúüű])/gi;
+    let translated = inputStr.replace(re, '$1v$1');
+    return translated;
+  }
+
+  function translateToGibberish(inputStr) {
+    let re = /([aeiou]+)/gi;
+    let translated = inputStr.replace(re, 'idig$1');
+    return translated;
+  }
+
+  let response;
+
+  if (!req.body.text || !req.body.lang) {
+    response = { error: 'I can\'t translate that!' };
+  } else if(req.body.lang === 'hu') {
+    response = { translated: translateToTeve(req.body.text), lang: 'teve' };
+  } else {
+    response = { translated: translateToGibberish(req.body.text), lang: 'gibberish' };
+  }
+  
+  res.status(200);
+  res.send(response);
+});
+
 app.listen(PORT, () => {
   console.log(`App is up and running on port ${PORT}`);
 });
