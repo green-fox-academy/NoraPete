@@ -1,0 +1,22 @@
+{
+  "name": "arrow",
+  "version": "1.0.0",
+  "description": "",
+  "main": "routes.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "supertest": "^4.0.2",
+    "tape": "^4.11.0"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
