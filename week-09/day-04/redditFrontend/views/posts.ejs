@@ -1,0 +1,13 @@
+<section>
+    <%parsed.posts.forEach(function(post) {%>
+    <div>
+        <div>
+            <img src="images/upvote.png" alt="upvote" />
+            <p><%=post.score%></p>
+            <img src="images/downvote.png" alt="downvote" />
+        </div>
+    </div>
+    <h2><%=post.title%></h2>
+    </div>
+    <%})%>
+</section>
