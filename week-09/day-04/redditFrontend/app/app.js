@@ -15,7 +15,9 @@ app.get('/add', function(req, res) {
 });
 
 app.get('/reddit', (req, res) => {
-  fetch('http://secure-reddit.herokuapp.com/simple/posts')
+  fetch('http://secure-reddit.herokuapp.com/simple/posts', {
+    headers: { 'Accepts': 'application/json' }
+  })
   .then(response => {
       if(response.status < 200 || response.status >= 300) {
         return new Error('Something went wrong');
