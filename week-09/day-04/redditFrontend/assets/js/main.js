@@ -23,6 +23,8 @@ function updateScore(id, score) {
   displayedScore.innerText = score;
 }
 
+// TODO: refact
+
 function sendRequestToVote(upOrDown, id) {
   return fetch(`http://secure-reddit.herokuapp.com/simple/posts/${id}/${upOrDown}`, {
     method: 'PUT',
