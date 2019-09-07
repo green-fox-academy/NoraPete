@@ -10,6 +10,10 @@ app.get('/posts', function(req, res) {
   res.sendFile(path.resolve('views/index.html'));
 });
 
+app.get('/posts/:id', function(req, res) {
+  res.sendFile(path.resolve('views/editForm.html'));
+});
+
 app.get('/add', function(req, res) {
   res.sendFile(path.resolve('views/addForm.html'))
 });

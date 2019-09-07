@@ -1,5 +1,5 @@
 <%parsed.posts.forEach(function(post) {%>
-<section id='p<%=post.id%>'>
+<section id="p<%=post.id%>">
     <div class="vote">
         <img src="images/upvote.png" alt="upvote"/>
         <p><%=post.score%></p>
@@ -11,7 +11,7 @@
         <%let owner;%>
         <%post.user? owner = post.user : owner = 'anonymous';%>
         <p>submited <%=timeInMin%> minutes ago by <span><%=owner%></span></p>
-        <a>Modify</a>
+        <a href="./posts/<%=post.id%>">Modify</a>
         <button>Delete</button>
     </div>
 </section>
