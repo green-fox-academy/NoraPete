@@ -31,7 +31,7 @@ function removePost(id) {
 // TODO: refact
 
 function sendRequestToVote(upOrDown, id) {
-  return fetch(`http://secure-reddit.herokuapp.com/simple/posts/${id}/${upOrDown}`, {
+  return fetch(`/posts/${id}/${upOrDown}`, {
     method: 'PUT',
     headers: { 'Accept': 'application/json' }
   })
@@ -42,8 +42,8 @@ function sendRequestToVote(upOrDown, id) {
 }
 
 function sendDeleteRequest(id) {
-  return fetch(`http://secure-reddit.herokuapp.com/simple/posts/${id}`, {
-    method: 'DELELTE',
+  return fetch(`/posts/${id}`, {
+    method: 'DELETE',
     headers: {
       'Accept': 'application/json'
     }
@@ -57,7 +57,7 @@ function sendDeleteRequest(id) {
   .catch(console.log);
 }
 
-fetch('/reddit')
+fetch('/posts')
   .then(res => res.text())
   .then(content => mainContent.innerHTML = content)
   .then(() => {
@@ -77,6 +77,7 @@ fetch('/reddit')
     let deleteBtns = document.querySelectorAll('.info > button');
     deleteBtns.forEach(function(btn) {
       btn.addEventListener('click', function(e) {
+        console.log('click', getId(e));
         sendDeleteRequest(getId(e));
       });
     });

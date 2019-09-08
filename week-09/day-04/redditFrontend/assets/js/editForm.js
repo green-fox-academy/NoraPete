@@ -23,7 +23,7 @@ function checkInput() {
 
 function sendPutRequest(description, address) {
   let body = { title: description, url: address };
-  return fetch(`http://secure-reddit.herokuapp.com/simple${getEndpoint()}`, { 
+  return fetch(`${getEndpoint()}`, { 
     method: 'PUT',
     body: JSON.stringify(body),
     headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' }
@@ -36,7 +36,7 @@ function sendPutRequest(description, address) {
    })
    .then(response => {
      if(response.status === 200) {
-      window.location.href = '/posts';
+      window.location.href = '/reddit';
      }
    })
    .catch(console.log);
