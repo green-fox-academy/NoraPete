@@ -10,8 +10,8 @@ function checkResponseStatus(res) {
 }
 
 function getId(event) {
-  let voteDiv = event.target.parentNode;
-  return voteDiv.parentNode.getAttribute('id').slice(1);
+  let div = event.target.parentNode;
+  return div.parentNode.getAttribute('id').slice(1);
 }
 
 function getUpOrDown(event) {
@@ -21,6 +21,11 @@ function getUpOrDown(event) {
 function updateScore(id, score) {
   let displayedScore = document.querySelector(`#p${id} > div > p`);
   displayedScore.innerText = score;
+}
+
+function removePost(id) {
+    let postToDelete = document.querySelector(`#p${id}`);
+    mainContent.removeChild(postToDelete);
 }
 
 // TODO: refact
@@ -36,6 +41,22 @@ function sendRequestToVote(upOrDown, id) {
     .catch(console.log)
 }
 
+function sendDeleteRequest(id) {
+  return fetch(`http://secure-reddit.herokuapp.com/simple/posts/${id}`, {
+    method: 'DELELTE',
+    headers: {
+      'Accept': 'application/json'
+    }
+  })
+  .then(checkResponseStatus)
+  .then(response => {
+    if(response.status === 200) {
+      removePost(id);
+    }
+  })
+  .catch(console.log);
+}
+
 fetch('/reddit')
   .then(res => res.text())
   .then(content => mainContent.innerHTML = content)
@@ -49,7 +70,15 @@ fetch('/reddit')
           e.target.setAttribute('src', 'images/downvoted.png');
         }
         sendRequestToVote(getUpOrDown(e), getId(e));
-      })
-    })
+      });
+    });
+  })
+  .then(() => {
+    let deleteBtns = document.querySelectorAll('.info > button');
+    deleteBtns.forEach(function(btn) {
+      btn.addEventListener('click', function(e) {
+        sendDeleteRequest(getId(e));
+      });
+    });
   })
   .catch(console.log);
