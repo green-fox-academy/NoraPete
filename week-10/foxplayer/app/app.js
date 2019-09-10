@@ -43,7 +43,31 @@ app.post('/playlists', function(req, res) {
       return;
     }
     res.send('ok');
-  })
-})
+  });
+});
+
+app.delete('/playlists/:id', function(req, res) {
+connection.query('SELECT sys FROM playlists WHERE id = ?', req.params.id, function(err, rows) {
+  if(err) {
+    console.log('Could not find the requested playlist');
+    return;
+  }
+  if(rows[0].sys === 0) {
+    connection.query('DELETE FROM playlists WHERE id = ?', req.params.id, function(delErr, rows) {
+      if(delErr) {
+        console.log('Could not delete playlist from database');
+        return;
+      }
+      res.send('ok');
+    });
+  } else {
+    res.send('You cannot delete this playlist');
+  }
+});
+
+/*
+  
+  */
+});
 
 module.exports = app;
