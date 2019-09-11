@@ -2,6 +2,8 @@ const express = require('express');
 const path = require('path');
 const mysql = require('mysql');
 
+const getData = require('./metadata');
+
 const app = express();
 
 const connection = mysql.createConnection({
@@ -65,5 +67,6 @@ app.delete('/playlists/:id', function (req, res) {
     }
   });
 });
+
 
 module.exports = app;
