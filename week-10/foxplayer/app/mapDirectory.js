@@ -26,6 +26,4 @@ function getMusicFilePaths(directory) {
   });
 }
 
-console.log(getMusicFilePaths('../static/music'));
-
 module.exports = getMusicFilePaths;

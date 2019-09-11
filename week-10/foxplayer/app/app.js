@@ -69,4 +69,31 @@ app.delete('/playlists/:id', function (req, res) {
 });
 
 
+app.post('/playlist-tracks/:playlist_id/:track_id', function(req, res) {
+  connection.query('SELECT id, path FROM tracks WHERE id = ?', req.params.track_id, function(err, row) {
+    if (err) {
+      console.log('Could not find the track in the database');
+      return;
+    }
+    connection.query('INSERT INTO tracks (id, path, playlist_id) VALUES (?, ?, ?)', [row[0].id, row[0].path, req.params.playlist_id], function(insErr, rows) {
+      if (insErr) {
+        console.log('Could not add the track to playlist');
+        return;
+      }
+      res.send('ok');
+    });
+  });
+});
+
+app.delete('/playlist-tracks/:playlist_id/:track_id', function(req, res) {
+  connection.query('DELETE FROM tracks WHERE id = ? AND playlist_id = ?;', [req.params.track_id, req.params.playlist_id], function(delErr, rows) {
+    if (delErr) {
+      console.log('Could not delete the track from playlist');
+      return;
+    }
+    res.send('ok');
+  });
+});
+
+
 module.exports = app;
