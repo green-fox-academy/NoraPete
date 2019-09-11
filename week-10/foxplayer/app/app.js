@@ -16,13 +16,13 @@ const connection = mysql.createConnection({
 app.use(express.static('static'));
 app.use(express.json());
 
-connection.connect(function (dbConnectionError) {
-  if (dbConnectionError) {
-    console.log(dbConnectionError);
-    return;
-  }
-  console.log('Connected to the database');
-})
+// connection.connect(function (dbConnectionError) {
+//   if (dbConnectionError) {
+//     console.log(dbConnectionError);
+//     return;
+//   }
+//   console.log('Connected to the database');
+// })
 
 app.get('/', function (req, res) {
   res.sendFile(path.resolve('static/experiment/experiment.html'));
@@ -43,17 +43,22 @@ app.get('/playlists', function (req, res) {
 });
 
 app.post('/playlists', function (req, res) {
-  connection.query('INSERT INTO playlists SET ?', req.body, function (err, rows) {
-    let response;
-    if (err) {
-      console.log('Could not insert playlist into database', err);
-      response = { error: 'Could not create this playlist' };
-      res.status(400);
-    } else {
-      response = { message: 'Playlist created' };
-    }
-    res.send(response);
-  });
+  if (req.body.playlist) {
+    connection.query('INSERT INTO playlists (playlist) VALUES (?);', req.body.playlist, function (err, rows) {
+      let response;
+      if (err) {
+        console.log('Could not insert playlist into database', err);
+        response = { error: 'Could not create this playlist' };
+        res.status(400);
+      } else {
+        response = { message: 'Playlist created' };
+      }
+      res.send(response);
+    });
+  } else {
+    res.status(400);
+    res.send({ error: 'Please provide a playlist name' });
+  }
 });
 
 app.delete('/playlists/:id', function (req, res) {

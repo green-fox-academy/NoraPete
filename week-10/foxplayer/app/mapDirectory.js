@@ -26,4 +26,4 @@ function getMusicFilePaths(directory) {
   });
 }
 
-module.exports = getMusicFilePaths;
+// module.exports = getMusicFilePaths;
