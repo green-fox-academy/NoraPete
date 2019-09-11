@@ -70,7 +70,11 @@ app.delete('/playlists/:id', function (req, res) {
 
 app.get('/playlist-tracks', function(req, res) {
   getData(0).then(data => res.send(data));
-})
+});
+
+app.get('/playlist-tracks/:playlist_id', function(req, res) {
+  getData(req.params.playlist_id).then(data => res.send(data));
+});
 
 app.post('/playlist-tracks/:playlist_id/:track_id', function(req, res) {
   connection.query('SELECT id, path FROM tracks WHERE id = ?', req.params.track_id, function(err, row) {

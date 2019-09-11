@@ -17,7 +17,7 @@ function getTracks(playlist) {
         resolve(rows);
       });
     } else {
-      connection.query('SELECT * FROM tracks WHERE palylist_id = ?', playlist, function (err, rows) {
+      connection.query('SELECT * FROM tracks WHERE playlist_id = ?', playlist, function (err, rows) {
         if (err) reject(err);
         resolve(rows);
       });
@@ -61,6 +61,7 @@ async function editData(track) {
 async function assembler(playlist) {
   let tracks = await getTracks(playlist);
   let response = await Promise.all(tracks.map(editData));
+  connection.end();
   return response;
 }
 
