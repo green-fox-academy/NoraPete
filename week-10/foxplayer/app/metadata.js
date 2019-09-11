@@ -9,15 +9,24 @@ const connection = mysql.createConnection({
   database: 'foxplayer'
 });
 
-function getTrack(id) {
+function getTracks(playlist) {
   return new Promise((resolve, reject) => {
-    connection.query('SELECT * FROM tracks WHERE id = ?', id, function (err, row) {
-      if (err) reject(err);
-      resolve(row);
-    });
+    if(playlist === 0) {
+      connection.query('SELECT * FROM tracks WHERE ISNULL(playlist_id);', function (err, rows) {
+        if (err) reject(err);
+        resolve(rows);
+      });
+    } else {
+      connection.query('SELECT * FROM tracks WHERE palylist_id = ?', playlist, function (err, rows) {
+        if (err) reject(err);
+        resolve(rows);
+      });
+    }
   })
-    .then((row) => {
-      return { id: row[0].id, path: row[0].path };
+    .then((rows) => {
+      return rows.map(function(row) {
+        return { id: row.id, path: row.path };
+      });
     })
     .catch(console.log);
 }
@@ -36,11 +45,9 @@ function getMetadata(path) {
     .catch(console.log);
 }
 
-async function assambleData(id) {
-  let idAndPath = await getTrack(id);
-  let meta = await getTrack(id).then((data) => {
-    return getMetadata(data.path)
-  });
+async function editData(track) {
+  let idAndPath = track;
+  let meta = await getMetadata(idAndPath.path);
   let response = {
     id: idAndPath.id,
     title: meta.title,
@@ -48,9 +55,13 @@ async function assambleData(id) {
     duration: meta.duration,
     path: idAndPath.path
   };
-  //console.log(response);
   return response;
 }
 
+async function assembler(playlist) {
+  let tracks = await getTracks(playlist);
+  let response = await Promise.all(tracks.map(editData));
+  return response;
+}
 
-module.exports = assambleData;
+module.exports = assembler;
