@@ -1,32 +1,16 @@
 const express = require('express');
 const path = require('path');
-const mysql = require('mysql');
 
 const getData = require('./metadata');
 const askDatabase = require('./mysqlQueryHandler');
 
 const app = express();
 
-const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: 'Password.',
-  database: 'foxplayer'
-})
-
 app.use(express.static('static'));
 app.use(express.json());
 
-// connection.connect(function (dbConnectionError) {
-//   if (dbConnectionError) {
-//     console.log(dbConnectionError);
-//     return;
-//   }
-//   console.log('Connected to the database');
-// })
-
 app.get('/', function (req, res) {
-  res.sendFile(path.resolve('static/experiment/experiment.html'));
+  res.sendFile(path.resolve('views/index.html'));
 });
 
 app.get('/playlists', function (req, res) {
@@ -53,8 +37,6 @@ app.post('/playlists', function (req, res) {
     res.send({ error: 'Please provide a playlist name' });
   }
 });
-
-// TODO: delete from tracks where playlist_id = id
 
 app.delete('/playlists/:id', function (req, res) {
   askDatabase('SELECT sys FROM playlists WHERE id = ?', [req.params.id])
@@ -102,8 +84,6 @@ app.get('/playlist-tracks/:playlist_id', function (req, res) {
       res.send({ error: 'Could not get tracks from the databse' });
     });
 });
-
-// TODO: check if playlist exists before adding track to it
 
 app.post('/playlist-tracks/:playlist_id/:track_id', function (req, res) {
   askDatabase('SELECT id FROM playlists WHERE id = ?', [req.params.playlist_id])
