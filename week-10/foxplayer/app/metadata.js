@@ -61,7 +61,7 @@ async function editData(track) {
 async function assembler(playlist) {
   let tracks = await getTracks(playlist);
   let response = await Promise.all(tracks.map(editData));
-  connection.end();
+  //connection.end();
   return response;
 }
 
