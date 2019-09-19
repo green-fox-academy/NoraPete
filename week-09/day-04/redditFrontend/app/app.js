@@ -2,14 +2,15 @@ const express = require('express');
 const mysql = require('mysql');
 const fetch = require('node-fetch');
 const path = require('path');
+require('dotenv').config();
 
 const app = express();
 
 const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: 'Password.',
-  database: 'reddit'
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DATABASE
 });
 
 app.set('view engine', 'ejs');
@@ -136,23 +137,6 @@ app.delete('/posts/:id', function(req, res) {
     res.setHeader('Contet-Type', 'application/json');
     res.send(result[0]);
   });
-})
-
-/*
-app.get('/reddit', (req, res) => {
-  fetch('http://secure-reddit.herokuapp.com/simple/posts', {
-    headers: { 'Accepts': 'application/json' }
-  })
-  .then(response => {
-      if(response.status < 200 || response.status >= 300) {
-        return new Error('Something went wrong');
-      }
-      return response;
-    })
-    .then(response => response.json())
-    .then(json => res.render('posts', { parsed: json }))
-    .catch(console.log);
 });
-*/
 
 module.exports = app;
